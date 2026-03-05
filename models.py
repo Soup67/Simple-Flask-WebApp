@@ -54,38 +54,11 @@ class RoomBooking(db.Model):
 
     user = db.relationship("User", foreign_keys=[userID])
     room = db.relationship("Room", foreign_keys=[roomID])
-
-    def __init__(self, check_in_date, check_out_date):
-        self.ticket_start_date = check_in_date
-        self.ticket_end_date = check_out_date
-
-
-class Ticket(db.Model):
-    __tablename__ = "ticket"
-    ticketID = db.Column(db.Integer, primary_key=True, nullable=False)
-    ticket_price = db.Column(db.Numeric(10,2), nullable=False)
-    ticket_name = db.Column(db.String(45), nullable=False)
-    zoo_timeslot = db.Column(db.DateTime(), nullable=False)
-
-    def __init__(self, ticket_price, ticket_name, zoo_timeslot):
-        self.ticket_price = ticket_price
-        self.ticket_name = ticket_name
-        self.zoo_timeslot = zoo_timeslot
-
-
-class TicketBooking(db.Model):
-    __tablename__ = "ticket_booking"
-    ticket_bookingID = db.Column(db.Integer, primary_key=True, nullable=False)
-    userID = db.Column(db.Integer, db.ForeignKey('user.userID'), nullable=False)
-    ticketID = db.Column(db.Integer, db.ForeignKey('ticket.ticketID'), nullable=False)
-    ticket_start_date = db.Column(db.Date, nullable=False)
-    ticket_end_date = db.Column(db.Date, nullable=False)
-
-    user = db.relationship("User", foreign_keys=[userID])
-    ticket = db.relationship("Ticket", foreign_keys=[ticketID])
+    
 
     def __init__(self, ticket_start_date, ticket_end_date):
         self.ticket_start_date = ticket_start_date
         self.ticket_end_date = ticket_end_date
+
 
 
