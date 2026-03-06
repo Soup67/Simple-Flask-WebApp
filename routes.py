@@ -69,18 +69,6 @@ def register_routes(app,db):
                     print(f"tb:{new_booking.ticket_bookingID}, t:{i}")
             return render_template("booking.html")
 
-        @app.route('/educational_visits', methods=["GET","POST"])
-        def educational_visits ():
-            return render_template("educational_visits.html")
-
-        @app.route('/environment', methods=["GET","POST"])
-        def environment ():
-            return render_template("environment.html")
-
-        @app.route('/accessibility', methods=["GET","POST"])
-        def accessibility ():
-            return render_template("accessibility.html")
-
 
         @app.route('/account', methods=["GET","POST"])
         def account ():
@@ -123,4 +111,5 @@ def register_routes(app,db):
             return render_template("index.html")
 
 if __name__ == '__main__':
+
     app.run()
