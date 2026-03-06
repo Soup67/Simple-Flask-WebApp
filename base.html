@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>{% block title %}Riget Zoo{% endblock %}</title>
+<head>
+  <!-- Theme Made By www.w3schools.com -->
+  <title>Riget Zoo Adventures</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="bootstrap or equivalent if you use it"></script>
+    <link href="../static/styles.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon" />
+</head>
+<body>
+
+
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav navbar-left me-auto">
+          <a id='short' href='/'><img src="../static/images/RZA_Logo_V4.png" width="60" height="70" ></a>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-center">
+        <li><a href="/example">example</a></li>
+        <li><a href="/example">example</a></li>
+        <li><a href="/example">example</a></li>
+        <li><a href="/example">example</a></li>
+        <li><a href="/example">example</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+          {% if session %}
+        <li><a href="/account">ACCOUNT</a></li>
+          {% else %}
+        <li><a href="/register">SIGN UP</a></li>
+          {% endif %}
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
